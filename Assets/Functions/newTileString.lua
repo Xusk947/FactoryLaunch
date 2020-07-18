@@ -3,7 +3,7 @@ function newTileString()
   local charTable = {
     ' ', '~', '-', '_'
   }
-  local lenght = 99999
+  local lenght = 9999
   math.randomseed(os.time())
   for i = 0, lenght do
     if(i % 100 == 0) then
