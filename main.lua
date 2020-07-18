@@ -1,10 +1,9 @@
 require('Assets/Functions/mapFunc')
 require('Assets/Functions/Presets/presets')
-require('Assets/Functions/Utils/playerControl')
-require('Assets/Functions/Utils/Cameras/playerCamera')
-require('Assets/Functions/Utils/player')
+require('Assets/Functions/Libs/Hump/camera')
 
 function love.load()
+  x, y = 0, 0
 
   windowSet(750, 100)
   loadMap('Assets/Maps/randomMap.lua')
@@ -12,10 +11,8 @@ function love.load()
 end
 
 function love.update(dt)
-  playerKeyControl(dt)
 end
 
 function love.draw()
   drawMap()
-  love.graphics.draw(playerSprite, player.x, player.y)
 end
