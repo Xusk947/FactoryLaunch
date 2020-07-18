@@ -1,34 +1,18 @@
 require('Assets/Functions/mapFunc')
+require('Assets/Functions/Presets/presets')
+require('Assets/Functions/Utils/playerControl')
 
 function love.load()
   x = 0
   y = 0
 
-  love.window.setMode(1000, 750, {resizable=true, vsync=false,})
+  windowSet(750, 100)
   loadMap('Assets/Maps/randomMap.lua')
   player = love.graphics.newImage('Assets/Images/Character.png')
 end
 
 function love.update(dt)
-  if(love.keyboard.isDown("w")) then
-    y = y - 75 * dt
-    y = y - 75 * dt
-  end
-
-  if(love.keyboard.isDown("a")) then
-    x = x - 75 * dt
-    x = x - 75 * dt
-  end
-
-  if(love.keyboard.isDown("s")) then
-    y = y + 75 * dt
-    y = y + 75 * dt
-  end
-
-  if(love.keyboard.isDown("d")) then
-    x = x + 75 * dt
-    x = x + 75 * dt
-  end
+  playerKeyControl()
 end
 
 function love.draw()
