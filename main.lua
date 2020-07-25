@@ -1,27 +1,24 @@
-require('Assets/Functions/mapFunc')
-require('Assets/Functions/Presets/presets')
-require('Assets/Functions/Libs/Hump/camera')
-require('Assets/Functions/Utils/cameras/playerCamera')
-require('Assets/Functions/Utils/playerPreset/player')
-require('Assets/Functions/Utils/playerPreset/playerControl')
+--import section
+require('project/core/content/modules')
 
+--main "chunk"
 function love.load()
-  player.y = love.graphics:getHeight()
-  player.x = love.graphics:getWidth()
-
-  windowSet(750, 500)
-  loadMap('Assets/Maps/randomMap.lua')
-  playerSprite = love.graphics.newImage('Assets/Images/Character.png')
+  	camera.scaleX = 6
+  	camera.scaleY = 6
 end
+
+
 
 function love.update(dt)
-  playerControl(dt)
-  playerCamera:setPosition((player.x - (love.graphics:getWidth()/2)), (player.y - (love.graphics:getHeight()/2)))
+	if love.keyboard.isDown("escape") then love.event.quit() end
+	if love.keyboard.isDown("r") then love.event.quit("restart") end
+	camera.x = camera.x + math.sin(dt) * 50
 end
 
+
+
 function love.draw()
-  playerCamera:set()
-  drawMap()
-  love.graphics.draw(playerSprite, player.x, player.y)
-  playerCamera:unset()
+	camera:set()
+	Tile:draw(atlasFloor, floors)
+	love.graphics.pop()
 end
